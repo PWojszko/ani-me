@@ -1,7 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import Carousel from "@/components/Carousel";
 import { SeasonAnimeList, TopAnimeList } from "@/vendor/jikan/jikanTypes";
-import Link from "next/link";
 
 type RowProps = {
   list: TopAnimeList | SeasonAnimeList;
@@ -11,12 +11,12 @@ type RowProps = {
 const Row = ({ list, title }: RowProps) => {
   return (
     <div className="flex">
-      <div className="flex flex-col items-center relative">
+      <div className="flex flex-col items-center relative -bottom-4">
         <h2 className="p-2 writing-vertical-rl text-2xl font-semibold">
           {title}
         </h2>
         <div
-          className="flex-1 bg-red-700 w-px"
+          className="flex-1 bg-red-700 w-0.5"
           style={{
             writingMode: "vertical-rl",
           }}
@@ -29,7 +29,7 @@ const Row = ({ list, title }: RowProps) => {
             key={item.mal_id}
             className="relative hover:scale-105 duration-300 h-full w-full"
           >
-            <Link href={`/AnimeList/${item.mal_id}`}>
+            <Link href={`/animelist/${item.mal_id}`}>
               <Image
                 className="object-cover h-full w-full"
                 src={item.images.webp.image_url}

@@ -2,6 +2,7 @@
 
 import Button from "@/components/Button";
 import { useEffect } from "react";
+import { AiFillWarning } from "react-icons/ai";
 
 export default function Error({
   error,
@@ -15,9 +16,12 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="p-4">
+    <div className="flex flex-col p-4 gap-4 h-full place-items-center place-content-center">
+      <AiFillWarning className="text-5xl text-red-700" />
       <h2>Something went wrong!</h2>
-      <Button onClick={reset}>Try again</Button>
+      <div>
+        <Button onClick={reset}>Try again</Button>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 const Watermark = ({ children }: { children: React.ReactNode }) => {
   return (
-    <span className="absolute inset-0 text-9xl font-bold -z-10 opacity-10 rotate-45 text-center">
+    <span className="flex items-center fixed inset-0 text-[20rem] -z-10 opacity-5 rotate-[15deg] text-center">
       {children}
     </span>
   );
