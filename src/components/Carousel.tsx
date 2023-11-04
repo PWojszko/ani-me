@@ -1,64 +1,95 @@
 "use client";
-import React from "react";
-import { useRef, useState, Children } from "react";
+import React, { useEffect } from "react";
+import { useRef, Children } from "react";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
+import useHorizontalScroll from "@/hooks/useHorizontalScroll";
+import { AnimatePresence, MotionValue, motion, useScroll } from "framer-motion";
+
+type CarouselProps = {
+  children: React.ReactNode;
+  width?: number;
+  height?: number;
+  setProgress?: React.Dispatch<
+    React.SetStateAction<MotionValue<number> | null>
+  >;
+};
 
 const Carousel = ({
   children,
   width = 225,
   height = 325,
-}: {
-  children: React.ReactNode;
-  width?: number;
-  height?: number;
-}) => {
+  setProgress,
+}: CarouselProps) => {
+  const { scrollLeft, scrollRight, scrollContainerRef, scrollProgress } =
+    useHorizontalScroll();
   const ref = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState<number>(0);
+  const { scrollXProgress } = useScroll({ container: ref });
 
-  const handleScroll = (toRight: boolean) => {
-    if (ref.current) {
-      const { scrollLeft, offsetWidth, scrollWidth, clientWidth } = ref.current;
+  useEffect(() => {
+    scrollContainerRef(() => ref.current);
+  }, [scrollContainerRef]);
 
-      const scrollToPosition =
-        scrollLeft + (toRight ? offsetWidth * 0.75 : -offsetWidth * 0.75);
-      const maxPosition = scrollWidth - clientWidth;
-      const scrollProgressCalc = (scrollToPosition / maxPosition) * 100;
-
-      ref.current?.scrollTo({
-        left: scrollToPosition,
-        behavior: "smooth",
-      });
-
-      const isScrollOverRight = scrollProgressCalc > 100;
-      const isScrollOverLeft = scrollProgressCalc < 5;
-
-      setScrollProgress(
-        isScrollOverRight ? 100 : isScrollOverLeft ? 0 : scrollProgressCalc
-      );
-    }
-  };
+  useEffect(() => {
+    if (setProgress) setProgress(scrollXProgress);
+  }, [scrollXProgress, setProgress]);
 
   return (
     <section className="relative grid grid-flow-col grid-rows-1 items-center">
-      <button
-        className={`absolute text-xl left-4 p-6 bg-gray-950 rounded-full opacity-75 hover:opacity-100 duration-300 z-10 ${
-          scrollProgress <= 0 && "hidden"
-        }`}
-        onClick={() => handleScroll(false)}
-        aria-label="scroll left"
-      >
-        <AiOutlineArrowLeft />
-      </button>
+      <AnimatePresence>
+        {scrollProgress > 0 && (
+          <motion.button
+            className="absolute flex place-items-center place-content-center text-xl left-4 p-6 z-10"
+            onClick={scrollLeft}
+            aria-label="scroll left"
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 0.75, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            whileHover={{ opacity: 1 }}
+            whileInView={{ opacity: 0.75 }}
+          >
+            <svg id="progress" width="100" height="100" viewBox="0 0 100 100">
+              <motion.circle
+                cx="50"
+                cy="50"
+                r="30"
+                stroke="rgb(185, 28, 28)"
+                pathLength="1"
+                className="indicator"
+                style={{ pathLength: scrollXProgress }}
+              />
+            </svg>
+            <AiOutlineArrowLeft className="absolute" />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
-      <button
-        className={`absolute text-xl right-4 p-6 bg-gray-950 rounded-full opacity-75 hover:opacity-100 duration-300 z-10 ${
-          scrollProgress >= 100 && "hidden"
-        }`}
-        onClick={() => handleScroll(true)}
-        aria-label="scroll right"
-      >
-        <AiOutlineArrowRight />
-      </button>
+      <AnimatePresence>
+        {scrollProgress < 100 && (
+          <motion.button
+            className="absolute flex place-items-center place-content-center text-xl right-4 p-6 z-10"
+            onClick={scrollRight}
+            aria-label="scroll right"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 0.75, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+            whileHover={{ opacity: 1 }}
+            whileInView={{ opacity: 0.75 }}
+          >
+            <svg id="progress" width="100" height="100" viewBox="0 0 100 100">
+              <motion.circle
+                cx="50"
+                cy="50"
+                r="30"
+                stroke="rgb(185, 28, 28)"
+                pathLength="1"
+                className="indicator"
+                style={{ pathLength: scrollXProgress }}
+              />
+            </svg>
+            <AiOutlineArrowRight className="absolute" />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       <div
         className="grid grid-flow-col gap-6 overflow-x-auto no-scrollbar pr-6 snap-x"
@@ -74,17 +105,6 @@ const Carousel = ({
             {child}
           </div>
         ))}
-      </div>
-
-      <div
-        className={`absolute -bottom-4 -left-6 -ml-px right-0 h-0.5 translate-y-full overflow-hidden`}
-      >
-        <div
-          className={`absolute inset-0 bg-red-700 duration-500`}
-          style={{
-            translate: `-${100 - scrollProgress}% 0`,
-          }}
-        />
       </div>
     </section>
   );

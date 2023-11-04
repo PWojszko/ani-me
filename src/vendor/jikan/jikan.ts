@@ -4,7 +4,7 @@ import NodeCache from "node-cache";
 const myCache = new NodeCache({ stdTTL: 5 });
 const baseUrl = "https://api.jikan.moe/v4";
 
-const fetchWithCache = async <T>(path: string): Promise<T> => {
+const fetchWithCache = async <T>(path: string): Promise<T | undefined> => {
   try {
     let data = myCache.get(`${baseUrl}/${path}`);
 
@@ -22,9 +22,7 @@ const fetchWithCache = async <T>(path: string): Promise<T> => {
 
 const Jikan = {
   animeById: async (id: string) =>
-    fetchWithCache<{ data: Anime }>(`anime/${id}/full`).then(
-      (data) => data.data
-    ),
+    fetchWithCache<{ data: Anime }>(`anime/${id}/full`),
   characters: async (id: string) =>
     fetchWithCache<{ data: Character[] }>(`anime/${id}/characters`),
   topList: async () => fetchWithCache<TopAnimeList>("top/anime"),

@@ -20,8 +20,10 @@ const Hero = ({ anime }: HeroProps) => {
 
       <div className="flex gap-6 text-right px-16 py-36 z-10">
         <div className="flex flex-col gap-4 max-w-xs">
-          <p className="font-bold text-2xl">{anime.title_english}</p>
-          <p>{anime.synopsis.slice(0, 100) + "..."}</p>
+          <p className="font-bold text-2xl text-shadow">
+            {anime.title_english}
+          </p>
+          <p className="text-shadow">{anime.synopsis.slice(0, 100) + "..."}</p>
           <div className="mt-auto">
             <Link href={`/animelist/${anime.mal_id}`}>
               <Button>Read more</Button>

@@ -20,7 +20,9 @@ export default function RootLayout({
       <body className="flex flex-col min-h-screen bg-gradient-to-b from-neutral-900 to-neutral-950 text-white">
         <div className="flex flex-1">
           <Navbar />
-          <main className="pb-10 flex-1">{children}</main>
+          <main className="relative pb-10 flex-1 overflow-hidden">
+            {children}
+          </main>
         </div>
 
         <footer className="row-span-1 p-4 bg-neutral-950">Footer</footer>

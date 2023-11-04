@@ -17,23 +17,27 @@ const Anime = async ({ params }: { params: { mal_id: string } }) => {
   return (
     <section className="flex flex-col gap-16 px-16 py-24">
       <div className="flex gap-4 justify-between">
-        <Watermark>{anime.title_japanese ?? anime.title}</Watermark>
+        <Watermark>
+          {anime?.data?.title_japanese ?? anime?.data?.title}
+        </Watermark>
 
         <div className="flex flex-col gap-4">
-          <h1 className="font-semibold text-4xl">{anime.title}</h1>
-          <p>{anime.synopsis}</p>
+          <h1 className="font-semibold text-4xl">{anime?.data?.title}</h1>
+          <p>{anime?.data?.synopsis}</p>
         </div>
 
-        <Image
-          src={anime.images.webp.image_url}
-          alt={anime.title}
-          width={300}
-          height={300}
-        />
+        {anime?.data?.images.webp.image_url && (
+          <Image
+            src={anime?.data?.images.webp.image_url}
+            alt={anime?.data?.title}
+            width={300}
+            height={300}
+          />
+        )}
       </div>
 
       <div className="grid grid-cols-3 grid-flow-row gap-4 justify-between">
-        {anime.relations.map(
+        {anime?.data?.relations.map(
           ({ relation, entry }) =>
             relation !== "Adaptation" && (
               <div key={`relation-${entry[0].mal_id}`} className="flex gap-4">
@@ -64,9 +68,25 @@ const Anime = async ({ params }: { params: { mal_id: string } }) => {
 
       <div>
         <Carousel>
-          {characters.data.map((character) => (
-            <div key={`character-${character.character.mal_id}`}>
-              {character.character.name}
+          {characters?.data?.map((character) => (
+            <div
+              key={`character-${character.character.mal_id}`}
+              className="relative h-full w-full"
+            >
+              <Image
+                className="relative inset-0 object-cover"
+                src={character.character.images.webp.image_url}
+                alt="character"
+                width={225}
+                height={350}
+              />
+              <p className="absolute bottom-4 left-4 text-shadow">
+                {character.character.name
+                  .split(",")
+                  .slice(0, 2)
+                  .reverse()
+                  .join(" ")}
+              </p>
             </div>
           ))}
         </Carousel>
@@ -75,25 +95,29 @@ const Anime = async ({ params }: { params: { mal_id: string } }) => {
       <div className="flex gap-4 justify-between">
         <div className="grid place-items-center">
           <span className="text-lg">Score</span>
-          <span className="text-red-700 font-bold text-2xl">{anime.score}</span>
+          <span className="text-red-700 font-bold text-2xl">
+            {anime?.data?.score}
+          </span>
         </div>
 
         <div className="grid place-items-center">
           <span className="text-lg">Type</span>
-          <span className="text-red-700 font-bold text-2xl">{anime.type}</span>
+          <span className="text-red-700 font-bold text-2xl">
+            {anime?.data?.type}
+          </span>
         </div>
 
         <div className="grid place-items-center">
           <span className="text-lg">Episodes</span>
           <span className="text-red-700 font-bold text-2xl">
-            {anime.episodes}
+            {anime?.data?.episodes}
           </span>
         </div>
       </div>
 
       <div>
         <iframe
-          src={`https://www.youtube.com/embed/${anime.trailer.youtube_id}?autoplay=0`}
+          src={`https://www.youtube.com/embed/${anime?.data?.trailer.youtube_id}?autoplay=0`}
           title="YouTube video player"
           allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen

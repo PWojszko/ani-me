@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Carousel from "@/components/Carousel";
 import { SeasonAnimeList, TopAnimeList } from "@/vendor/jikan/jikanTypes";
+import { useState } from "react";
+import { MotionValue, motion } from "framer-motion";
 
 type RowProps = {
   list: TopAnimeList | SeasonAnimeList;
@@ -9,8 +13,10 @@ type RowProps = {
 };
 
 const Row = ({ list, title }: RowProps) => {
+  const [progress, setProgress] = useState<MotionValue<number> | null>(null);
+
   return (
-    <div className="flex">
+    <div className="flex relative">
       <div className="flex flex-col items-center relative -bottom-4">
         <h2 className="p-2 writing-vertical-rl text-2xl font-semibold">
           {title}
@@ -23,7 +29,7 @@ const Row = ({ list, title }: RowProps) => {
         ></div>
       </div>
 
-      <Carousel>
+      <Carousel setProgress={setProgress}>
         {list.data.map((item) => (
           <div
             key={item.mal_id}
@@ -39,7 +45,7 @@ const Row = ({ list, title }: RowProps) => {
               />
 
               <div className="flex items-end p-6 absolute inset-0 opacity-0 hover:opacity-100 duration-300 before:opacity-50 before:content-[''] before:absolute before:inset-0 before:bg-black">
-                <p className="relative p-4 font-bold text-lg">
+                <p className="relative p-4 font-bold text-lg text-shadow">
                   <span className="absolute left-0 top-0 bottom-0 w-1 bg-red-700" />
                   {item.title}
                 </p>
@@ -48,6 +54,13 @@ const Row = ({ list, title }: RowProps) => {
           </div>
         ))}
       </Carousel>
+
+      {progress && (
+        <motion.div
+          style={{ scaleX: progress }}
+          className="absolute h-0.5 left-6 right-0 -bottom-4  bg-red-700 origin-left"
+        />
+      )}
     </div>
   );
 };

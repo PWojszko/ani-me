@@ -13,9 +13,11 @@ const Home = async () => {
 
   return (
     <section className="grid gap-10">
-      <Hero anime={getRandomAnime(currentSeasonList)} />
-      <Row list={currentSeasonList} title="Current season" />
-      <Row list={topAnimeList} title="Top anime" />
+      {currentSeasonList && <Hero anime={getRandomAnime(currentSeasonList)} />}
+      {currentSeasonList && (
+        <Row list={currentSeasonList} title="Current season" />
+      )}
+      {topAnimeList && <Row list={topAnimeList} title="Top anime" />}
     </section>
   );
 };
