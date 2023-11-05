@@ -17,19 +17,17 @@ const Anime = async ({ params }: { params: { mal_id: string } }) => {
   return (
     <section className="flex flex-col gap-16 px-16 py-24">
       <div className="flex gap-4 justify-between">
-        <Watermark>
-          {anime?.data?.title_japanese ?? anime?.data?.title}
-        </Watermark>
+        <Watermark>{anime?.data.title_japanese ?? anime?.data.title}</Watermark>
 
         <div className="flex flex-col gap-4">
-          <h1 className="font-semibold text-4xl">{anime?.data?.title}</h1>
-          <p>{anime?.data?.synopsis}</p>
+          <h1 className="font-semibold text-4xl">{anime?.data.title}</h1>
+          <p>{anime?.data.synopsis}</p>
         </div>
 
-        {anime?.data?.images.webp.image_url && (
+        {anime?.data.images.webp.image_url && (
           <Image
-            src={anime?.data?.images.webp.image_url}
-            alt={anime?.data?.title}
+            src={anime?.data.images.webp.image_url}
+            alt={anime?.data.title}
             width={300}
             height={300}
           />
@@ -37,7 +35,7 @@ const Anime = async ({ params }: { params: { mal_id: string } }) => {
       </div>
 
       <div className="grid grid-cols-3 grid-flow-row gap-4 justify-between">
-        {anime?.data?.relations.map(
+        {anime?.data.relations.map(
           ({ relation, entry }) =>
             relation !== "Adaptation" && (
               <div key={`relation-${entry[0].mal_id}`} className="flex gap-4">
@@ -74,7 +72,7 @@ const Anime = async ({ params }: { params: { mal_id: string } }) => {
               className="relative h-full w-full"
             >
               <Image
-                className="relative inset-0 object-cover"
+                className="relative inset-0 h-full object-cover"
                 src={character.character.images.webp.image_url}
                 alt="character"
                 width={225}
@@ -96,28 +94,28 @@ const Anime = async ({ params }: { params: { mal_id: string } }) => {
         <div className="grid place-items-center">
           <span className="text-lg">Score</span>
           <span className="text-red-700 font-bold text-2xl">
-            {anime?.data?.score}
+            {anime?.data.score}
           </span>
         </div>
 
         <div className="grid place-items-center">
           <span className="text-lg">Type</span>
           <span className="text-red-700 font-bold text-2xl">
-            {anime?.data?.type}
+            {anime?.data.type}
           </span>
         </div>
 
         <div className="grid place-items-center">
           <span className="text-lg">Episodes</span>
           <span className="text-red-700 font-bold text-2xl">
-            {anime?.data?.episodes}
+            {anime?.data.episodes}
           </span>
         </div>
       </div>
 
       <div>
         <iframe
-          src={`https://www.youtube.com/embed/${anime?.data?.trailer.youtube_id}?autoplay=0`}
+          src={`https://www.youtube.com/embed/${anime?.data.trailer.youtube_id}?autoplay=0`}
           title="YouTube video player"
           allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen

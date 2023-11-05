@@ -34,7 +34,14 @@ const Carousel = ({
   }, [scrollXProgress, setProgress]);
 
   return (
-    <section className="relative grid grid-flow-col grid-rows-1 items-center">
+    <motion.section
+      className="relative grid grid-flow-col grid-rows-1 items-center origin-top"
+      viewport={{ once: true }}
+      initial={{ opacity: 0 }}
+      whileInView={{
+        opacity: 1,
+      }}
+    >
       <AnimatePresence>
         {scrollProgress > 0 && (
           <motion.button
@@ -45,7 +52,6 @@ const Carousel = ({
             animate={{ opacity: 0.75, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
             whileHover={{ opacity: 1 }}
-            whileInView={{ opacity: 0.75 }}
           >
             <svg id="progress" width="100" height="100" viewBox="0 0 100 100">
               <motion.circle
@@ -73,7 +79,6 @@ const Carousel = ({
             animate={{ opacity: 0.75, x: 0 }}
             exit={{ opacity: 0, x: 100 }}
             whileHover={{ opacity: 1 }}
-            whileInView={{ opacity: 0.75 }}
           >
             <svg id="progress" width="100" height="100" viewBox="0 0 100 100">
               <motion.circle
@@ -106,7 +111,7 @@ const Carousel = ({
           </div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 
