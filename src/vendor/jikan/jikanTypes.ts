@@ -191,3 +191,14 @@ export type SeasonAnimeList = {
   };
   data: Anime[];
 };
+
+export type SeasonsList = {
+  pagination: {
+    last_visible_page: number;
+    has_next_page: boolean;
+  };
+  data: {
+    year: number;
+    seasons: ("winter" | "spring" | "summer" | "fall")[];
+  }[];
+};

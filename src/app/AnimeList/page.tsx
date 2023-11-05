@@ -1,9 +1,13 @@
-import Link from "next/link";
+import jikan from "@/vendor/jikan/jikan";
+import SeasonsPicker from "./[mal_id]/seasonsPicker";
 
-const AnimeList = () => {
+const AnimeList = async () => {
+  const seasons = await jikan.getSeasonsList();
+
   return (
     <section>
-      <h1>AnimeList page</h1>
+      {seasons && <SeasonsPicker seasons={seasons} />}
+      <div></div>
     </section>
   );
 };
