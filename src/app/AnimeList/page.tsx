@@ -1,5 +1,5 @@
 import jikan from "@/vendor/jikan/jikan";
-import SeasonsPicker from "./[mal_id]/seasonsPicker";
+import SeasonsPicker from "./seasonsPicker";
 
 const AnimeList = async () => {
   const seasons = await jikan.getSeasonsList();
