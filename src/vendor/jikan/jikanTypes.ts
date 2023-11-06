@@ -1,3 +1,14 @@
+type Pagination = {
+  last_visible_page: number;
+  has_next_page: boolean;
+  current_page: number;
+  items: {
+    count: number;
+    total: number;
+    per_page: number;
+  };
+};
+
 export type Character = {
   character: {
     mal_id: number;
@@ -168,27 +179,18 @@ export type Anime = {
   }[];
 };
 
-export type TopAnimeList = {
-  last_visible_page: number;
-  has_next_page: boolean;
-  current_page: number;
-  items: {
-    count: number;
-    total: number;
-    per_page: number;
-  };
+export type TopAnime = {
+  pagination: Pagination;
   data: Anime[];
 };
 
-export type SeasonAnimeList = {
-  last_visible_page: number;
-  has_next_page: boolean;
-  current_page: number;
-  items: {
-    count: number;
-    total: number;
-    per_page: number;
-  };
+export type SeasonNow = {
+  pagination: Pagination;
+  data: Anime[];
+};
+
+export type Season = {
+  pagination: Pagination;
   data: Anime[];
 };
 

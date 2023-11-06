@@ -1,9 +1,10 @@
 import {
   Anime,
   Character,
-  SeasonAnimeList,
+  Season,
+  SeasonNow,
   SeasonsList,
-  TopAnimeList,
+  TopAnime,
 } from "./jikanTypes";
 import NodeCache from "node-cache";
 
@@ -31,9 +32,12 @@ const Jikan = {
     fetchWithCache<{ data: Anime }>(`anime/${id}/full`),
   characters: async (id: string) =>
     fetchWithCache<{ data: Character[] }>(`anime/${id}/characters`),
-  topList: async () => fetchWithCache<TopAnimeList>("top/anime"),
-  seasonList: async () => fetchWithCache<SeasonAnimeList>("seasons/now"),
+
+  getTopAnime: async () => fetchWithCache<TopAnime>("top/anime"),
+  getSeasonNow: async () => fetchWithCache<SeasonNow>("seasons/now"),
   getSeasonsList: async () => fetchWithCache<SeasonsList>(`seasons`),
+  getSeason: async (year: number, season: string) =>
+    fetchWithCache<Season>(`seasons/${year}/${season}`),
 };
 
 export default Jikan;

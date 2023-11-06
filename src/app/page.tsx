@@ -1,23 +1,21 @@
 import Jikan from "@/vendor/jikan/jikan";
 import Row from "./row";
 import Hero from "./hero";
-import { SeasonAnimeList } from "@/vendor/jikan/jikanTypes";
+import { SeasonNow } from "@/vendor/jikan/jikanTypes";
 
-const getRandomAnime = (list: SeasonAnimeList) => {
+const getRandomAnime = (list: SeasonNow) => {
   return list.data[Math.floor(Math.random() * list.data?.length)];
 };
 
 const Home = async () => {
-  const topAnimeList = await Jikan.topList();
-  const currentSeasonList = await Jikan.seasonList();
+  const topAnime = await Jikan.getTopAnime();
+  const seasonNow = await Jikan.getSeasonNow();
 
   return (
     <section className="grid gap-10">
-      {currentSeasonList && <Hero anime={getRandomAnime(currentSeasonList)} />}
-      {currentSeasonList && (
-        <Row list={currentSeasonList} title="Current season" />
-      )}
-      {topAnimeList && <Row list={topAnimeList} title="Top anime" />}
+      {seasonNow && <Hero anime={getRandomAnime(seasonNow)} />}
+      {seasonNow && <Row list={seasonNow} title="Current season" />}
+      {topAnime && <Row list={topAnime} title="Top anime" />}
     </section>
   );
 };

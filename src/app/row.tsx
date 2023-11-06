@@ -3,12 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import Carousel from "@/components/Carousel";
-import { SeasonAnimeList, TopAnimeList } from "@/vendor/jikan/jikanTypes";
+import { TopAnime, SeasonNow } from "@/vendor/jikan/jikanTypes";
 import { useState } from "react";
 import { MotionValue, motion } from "framer-motion";
 
 type RowProps = {
-  list: TopAnimeList | SeasonAnimeList;
+  list: TopAnime | SeasonNow;
   title: string;
 };
 
