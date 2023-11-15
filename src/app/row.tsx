@@ -8,7 +8,7 @@ import { useState } from "react";
 import { MotionValue, motion } from "framer-motion";
 
 type RowProps = {
-  list: TopAnime | SeasonNow;
+  list?: TopAnime | SeasonNow;
   title: string;
 };
 
@@ -18,9 +18,7 @@ const Row = ({ list, title }: RowProps) => {
   return (
     <div className="flex relative">
       <div className="flex flex-col items-center relative -bottom-4">
-        <h2 className="p-2 writing-vertical-rl text-2xl font-semibold">
-          {title}
-        </h2>
+        <h2 className="p-2 w-12 writing-vertical-rl">{title}</h2>
         <div
           className="flex-1 bg-red-700 w-0.5"
           style={{
@@ -30,24 +28,24 @@ const Row = ({ list, title }: RowProps) => {
       </div>
 
       <Carousel setProgress={setProgress}>
-        {list.data.map((item) => (
+        {list?.data.map((anime) => (
           <div
-            key={item.mal_id}
+            key={anime.mal_id}
             className="relative hover:scale-105 duration-300 h-full w-full"
           >
-            <Link href={`/animelist/${item.mal_id}`}>
+            <Link href={`/anime/${anime.mal_id}`}>
               <Image
                 className="object-cover h-full w-full"
-                src={item.images.webp.image_url}
-                alt={item.title}
-                width={200}
-                height={200}
+                src={anime.images.webp.image_url}
+                alt={anime.title}
+                width={225}
+                height={325}
               />
 
               <div className="flex items-end p-6 absolute inset-0 opacity-0 hover:opacity-100 duration-300 before:opacity-50 before:content-[''] before:absolute before:inset-0 before:bg-black">
                 <p className="relative p-4 font-bold text-lg text-shadow">
                   <span className="absolute left-0 top-0 bottom-0 w-1 bg-red-700" />
-                  {item.title}
+                  {anime.title}
                 </p>
               </div>
             </Link>

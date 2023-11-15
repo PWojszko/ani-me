@@ -4,7 +4,7 @@ import Button from "@/components/Button";
 import Link from "next/link";
 
 type HeroProps = {
-  anime: Anime;
+  anime?: Anime;
 };
 
 const Hero = ({ anime }: HeroProps) => {
@@ -20,23 +20,24 @@ const Hero = ({ anime }: HeroProps) => {
 
       <div className="flex gap-6 text-right px-16 py-36 z-10">
         <div className="flex flex-col gap-4 max-w-xs">
-          <p className="font-bold text-2xl text-shadow">
-            {anime.title_english}
-          </p>
-          <p className="text-shadow">{anime.synopsis.slice(0, 100) + "..."}</p>
+          <h2 className="text-shadow">{anime?.title_english}</h2>
+          <p className="text-shadow limited-text-lines-9">{anime?.synopsis}</p>
           <div className="mt-auto">
-            <Link href={`/animelist/${anime.mal_id}`}>
+            <Link href={`/anime/${anime?.mal_id}`}>
               <Button>Read more</Button>
             </Link>
           </div>
         </div>
 
-        <Image
-          src={anime.images.webp.image_url}
-          alt="red latern on street"
-          width={300}
-          height={300}
-        />
+        {anime?.images.webp.image_url && (
+          <Image
+            className="w-64 h-96 object-cover"
+            src={anime?.images.webp.image_url}
+            alt="red latern on street"
+            width={300}
+            height={300}
+          />
+        )}
 
         <div className="absolute top-36 bottom-16 right-10 w-0.5 bg-red-700" />
       </div>

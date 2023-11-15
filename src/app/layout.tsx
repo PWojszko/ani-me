@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Navbar from "@/components/Navbar";
+import BigNavbar from "@/app/BigNavbar";
+import SmallBottomNavbar from "./SmallBottomNavbar";
 import "./globals.css";
+import SmallTopNavbar from "./SmallTopNavbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,15 +19,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen bg-gradient-to-b from-neutral-900 to-neutral-950 text-white">
-        <div className="flex flex-1">
-          <Navbar />
-          <main className="relative pb-10 flex-1 overflow-hidden">
-            {children}
-          </main>
-        </div>
+      <body className="flex min-h-screen">
+        <div className="flex flex-col md:flex-row flex-1">
+          <div className="md:hidden sticky top-0 z-20">
+            <SmallTopNavbar />
+          </div>
 
-        <footer className="row-span-1 p-4 bg-neutral-950">Footer</footer>
+          <div className="hidden md:block">
+            <BigNavbar />
+          </div>
+
+          <main className="relative pb-10 flex-1">{children}</main>
+
+          <div className="md:hidden sticky bottom-0 z-20">
+            <SmallBottomNavbar />
+          </div>
+        </div>
       </body>
     </html>
   );

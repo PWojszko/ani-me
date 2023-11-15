@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-gray-100;
+    @apply bg-gradient-to-b;
+    @apply from-neutral-900 to-neutral-950;
+    @apply text-white;
+    @apply select-none;
+  }
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  p {
+    @apply text-base;
+  }
+}
+
 @layer utilities {
   @variants responsive {
     .no-scrollbar::-webkit-scrollbar {
@@ -19,6 +41,13 @@
 
     .text-shadow {
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+    }
+
+    .limited-text-lines-9 {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 9;
+      -webkit-box-orient: vertical;
     }
   }
 }

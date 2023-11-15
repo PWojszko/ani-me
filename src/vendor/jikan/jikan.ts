@@ -36,7 +36,7 @@ const Jikan = {
   getTopAnime: async () => fetchWithCache<TopAnime>("top/anime"),
   getSeasonNow: async () => fetchWithCache<SeasonNow>("seasons/now"),
   getSeasonsList: async () => fetchWithCache<SeasonsList>(`seasons`),
-  getSeason: async (year: number, season: string) =>
+  getSeason: async (year: string | number, season: string) =>
     fetchWithCache<Season>(`seasons/${year}/${season}`),
 };
 

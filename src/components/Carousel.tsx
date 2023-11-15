@@ -106,7 +106,10 @@ const Carousel = ({
         }}
       >
         {Children.toArray(children).map((child, index) => (
-          <div key={index} className="snap-start overflow-hidden rounded-xl">
+          <div
+            key={index}
+            className="snap-start overflow-hidden h-80 w-56 rounded-xl"
+          >
             {child}
           </div>
         ))}
