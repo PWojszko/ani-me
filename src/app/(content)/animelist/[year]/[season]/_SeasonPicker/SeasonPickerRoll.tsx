@@ -8,17 +8,17 @@ import Season from "./Season";
 
 export type Seasons = "winter" | "spring" | "summer" | "fall";
 
-type SeasonsPickerProps = {
+type SeasonPickerRollProps = {
   seasons?: SeasonsList;
   yearParam: string;
   seasonParam: Seasons;
 };
 
-const SeasonsPicker = ({
+const SeasonPickerRoll = ({
   seasons,
   yearParam,
   seasonParam,
-}: SeasonsPickerProps) => {
+}: SeasonPickerRollProps) => {
   const [selectedYear, setSelectedYear] = useState(Number(yearParam));
   const ref = useRef<HTMLDivElement>(null);
 
@@ -28,11 +28,11 @@ const SeasonsPicker = ({
 
   useEffect(() => {
     if (ref.current) {
-      const indexOfYear = seasons?.data.findIndex(
+      const indexOfYear = seasons?.data?.findIndex(
         (season) => season.year === selectedYear
       );
       const refChildren = ref.current.children[indexOfYear ?? 0];
-      refChildren.scrollIntoView({ behavior: "smooth", block: "center" });
+      refChildren?.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }, [seasons?.data, selectedYear]);
 
@@ -49,7 +49,7 @@ const SeasonsPicker = ({
                   "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)",
               }}
             >
-              {seasons?.data.map(({ year }) => (
+              {seasons?.data?.map(({ year }) => (
                 <Year
                   key={`rotator-year-${year}`}
                   handleYearClick={handleYearClick}
@@ -64,7 +64,7 @@ const SeasonsPicker = ({
 
           <div className="flex flex-col gap-2 px-4">
             {seasons?.data
-              .find((season) => season.year === selectedYear)
+              ?.find((season) => season.year === selectedYear)
               ?.seasons.map((season) => (
                 <Season
                   season={season}
@@ -81,4 +81,4 @@ const SeasonsPicker = ({
   );
 };
 
-export default SeasonsPicker;
+export default SeasonPickerRoll;

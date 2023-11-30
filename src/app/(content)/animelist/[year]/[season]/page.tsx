@@ -1,7 +1,8 @@
-import Jikan from "@/vendor/jikan/jikan";
-import SeasonsPicker from "./SeasonsPicker";
-import type { Seasons } from "./SeasonsPicker";
+import { Suspense } from "react";
+import RotatedTitle from "@/components/RotatedTitle";
+import type { Seasons } from "./_SeasonPicker/SeasonPickerRoll";
 import Cards from "./Cards";
+import SeasonPicker from "./_SeasonPicker/SeasonPicker";
 
 type CardsParams = {
   params: {
@@ -10,19 +11,19 @@ type CardsParams = {
   };
 };
 
-const AnimeList = async ({ params }: CardsParams) => {
-  const seasonsList = await Jikan.getSeasonsList();
-  const season = await Jikan.getSeason(params.year, params.season);
-
+const AnimeList = ({ params }: CardsParams) => {
   return (
-    <section className="grid gap-10 px-16 py-12">
-      <SeasonsPicker
-        seasons={seasonsList}
-        yearParam={params.year}
-        seasonParam={params.season}
-      />
-      <Cards season={season} />
-    </section>
+    <div className="grid gap-10 px-16 py-12">
+      <RotatedTitle>Browse anime</RotatedTitle>
+
+      <Suspense fallback={"Loading..."}>
+        <SeasonPicker year={params.year} seasons={params.season} />
+      </Suspense>
+
+      <Suspense fallback={"Loading..."}>
+        <Cards year={params.year} season={params.season} />
+      </Suspense>
+    </div>
   );
 };
 

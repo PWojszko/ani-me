@@ -12,6 +12,7 @@ const myCache = new NodeCache({ stdTTL: 5 });
 const baseUrl = "https://api.jikan.moe/v4";
 
 const fetchWithCache = async <T>(path: string): Promise<T | undefined> => {
+  let fetchedTimes = 0;
   try {
     let data = myCache.get(`${baseUrl}/${path}`);
 
@@ -23,7 +24,12 @@ const fetchWithCache = async <T>(path: string): Promise<T | undefined> => {
 
     return data as T;
   } catch (e) {
-    throw e;
+    fetchedTimes++;
+    if (fetchedTimes < 5) {
+      fetchWithCache(path);
+    } else {
+      throw new Error("Failed to fetch data");
+    }
   }
 };
 

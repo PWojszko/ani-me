@@ -3,7 +3,7 @@
 import Button from "@/components/Button";
 import { Variants, motion } from "framer-motion";
 import Link from "next/link";
-import { Seasons } from "./SeasonsPicker";
+import { Seasons } from "./SeasonPickerRoll";
 import { useState } from "react";
 
 type SeasonProps = {
@@ -31,7 +31,7 @@ const Season = ({ season, year, seasonParam, yearParam }: SeasonProps) => {
       animate={isClicked || isCurrentlyPicked ? "active" : "inactive"}
       onTap={() => setIsClicked(true)}
     >
-      <Link href={`/animelist/${year}/${season}`}>
+      <Link href={`/animelist/${year}/${season}`} replace>
         <Button className="w-full">{season}</Button>
       </Link>
     </motion.div>
