@@ -1,30 +1,34 @@
-import { Suspense } from "react";
-import RotatedTitle from "@/components/RotatedTitle";
-import type { Seasons } from "./_SeasonPicker/SeasonPickerRoll";
-import Cards from "./Cards";
-import SeasonPicker from "./_SeasonPicker/SeasonPicker";
+import { Seasons } from "@/app/(content)/animelist/[year]/[season]/_SeasonPicker/SeasonPickerRoll";
+import Jikan from "@/vendor/jikan/jikan";
+import Image from "next/image";
+import Link from "next/link";
 
-type CardsParams = {
+type AnimeListParams = {
   params: {
     year: string;
     season: Seasons;
   };
 };
 
-const AnimeList = ({ params }: CardsParams) => {
+const AnimeList = async ({ params }: AnimeListParams) => {
+  const seasonList = await Jikan.getSeason(params.year, params.season);
+
   return (
-    <div className="grid gap-10 px-16 py-12">
-      <RotatedTitle>Browse anime</RotatedTitle>
-
-      <Suspense fallback={"Loading..."}>
-        <SeasonPicker year={params.year} seasons={params.season} />
-      </Suspense>
-
-      <Suspense fallback={"Loading..."}>
-        <Cards year={params.year} season={params.season} />
-      </Suspense>
-    </div>
+    <>
+      {seasonList?.data?.map((anime) => (
+        <div key={`AnimeList-${anime.mal_id}`}>
+          <Link href={`/anime/${anime.mal_id}`}>
+            <Image
+              className="w-64 h-80 object-cover rounded-md"
+              src={anime.images.webp.image_url}
+              alt={anime.title}
+              width={225}
+              height={319}
+            />
+          </Link>
+        </div>
+      ))}
+    </>
   );
 };
-
 export default AnimeList;

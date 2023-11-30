@@ -18,7 +18,7 @@ const Related = ({ anime }: RelatedProps) => {
         ({ relation, entry }) =>
           relation !== "Adaptation" && (
             <div key={`relation-${entry[0].mal_id}`} className="flex gap-4">
-              <Link href={`/animelist/${entry[0].mal_id}`}>
+              <Link href={`/anime/${entry[0].mal_id}`}>
                 <Button className="h-full">
                   {relation === "Sequel" ? (
                     <AiOutlineArrowRight className="text-xl" />

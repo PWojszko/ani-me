@@ -11,6 +11,9 @@ import NodeCache from "node-cache";
 const myCache = new NodeCache({ stdTTL: 5 });
 const baseUrl = "https://api.jikan.moe/v4";
 
+const delay = (ms: number | undefined) =>
+  new Promise((res) => setTimeout(res, ms));
+
 const fetchWithCache = async <T>(path: string): Promise<T | undefined> => {
   let fetchedTimes = 0;
   try {
