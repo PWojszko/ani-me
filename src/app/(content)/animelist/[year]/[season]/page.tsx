@@ -16,17 +16,15 @@ const AnimeList = async ({ params }: AnimeListParams) => {
   return (
     <>
       {seasonList?.data?.map((anime) => (
-        <div key={`AnimeList-${anime.mal_id}`}>
-          <Link href={`/anime/${anime.mal_id}`}>
-            <Image
-              className="w-64 h-80 object-cover rounded-md"
-              src={anime.images.webp.image_url}
-              alt={anime.title}
-              width={225}
-              height={319}
-            />
-          </Link>
-        </div>
+        <Link href={`/anime/${anime.mal_id}`} key={`AnimeList-${anime.mal_id}`}>
+          <Image
+            className="object-cover rounded-md w-full h-full"
+            src={anime.images.webp.image_url}
+            alt={anime.title}
+            width={225}
+            height={319}
+          />
+        </Link>
       ))}
     </>
   );

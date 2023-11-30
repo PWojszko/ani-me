@@ -19,7 +19,9 @@ export default function ContentLayout({
           <BigNavbar />
         </div>
 
-        <main className="relative pb-10 flex-1">{children}</main>
+        <main className="relative pb-10 flex-1 max-w-screen-5xl mx-auto w-full">
+          {children}
+        </main>
 
         <div className="md:hidden sticky bottom-0 z-20">
           <SmallBottomNavbar />

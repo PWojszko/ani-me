@@ -9,7 +9,7 @@ export default function ContentLayout({
   return (
     <div className="grid gap-10 px-16 py-12">
       <RotatedTitle>Browse anime</RotatedTitle>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+      <div className="grid gap-4 grid-cols-repeat-64 auto-rows-96 grid-flow-row justify-center">
         <SeasonPicker />
         {children}
       </div>

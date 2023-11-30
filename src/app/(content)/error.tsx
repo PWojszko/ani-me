@@ -18,7 +18,7 @@ export default function Error({
   return (
     <div className="flex flex-col p-4 gap-4 h-full place-items-center place-content-center">
       <AiFillWarning className="text-5xl text-red-700" />
-      <h2>Something went wrong!</h2>
+      <h1>Something went wrong!</h1>
       <div>
         <Button onClick={reset}>Try again</Button>
       </div>

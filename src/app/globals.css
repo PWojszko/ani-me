@@ -49,5 +49,13 @@
       -webkit-line-clamp: 9;
       -webkit-box-orient: vertical;
     }
+
+    .grid-cols-repeat-64 {
+      grid-template-columns: repeat(auto-fill, theme(spacing.64));
+    }
+
+    .auto-rows-96 {
+      grid-auto-rows: theme(spacing.96);
+    }
   }
 }
