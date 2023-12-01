@@ -11,11 +11,6 @@ const NavLinks = [
     text: "Browse anime",
   },
   {
-    href: "/login",
-    icon: <AiOutlineLogin />,
-    text: "Log in",
-  },
-  {
     href: "/register",
     icon: <AiOutlineUserAdd />,
     text: "Register",

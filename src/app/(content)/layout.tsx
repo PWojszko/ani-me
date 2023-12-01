@@ -1,3 +1,4 @@
+import AuthNavbar from "@/components/AuthNavbar/AuthNavbar";
 import BigNavbar from "../../components/Navbar/BigNavbar";
 import SmallBottomNavbar from "../../components/Navbar/SmallBottomNavbar";
 import SmallTopNavbar from "../../components/Navbar/SmallTopNavbar";
@@ -11,6 +12,10 @@ export default function ContentLayout({
   return (
     <div className="flex min-h-screen w-full select-none">
       <div className="flex flex-col md:flex-row flex-1">
+        <div className="fixed top-4 right-4 w-40 h-16 z-30">
+          <AuthNavbar />
+        </div>
+
         <div className="md:hidden sticky top-0 z-20">
           <SmallTopNavbar />
         </div>

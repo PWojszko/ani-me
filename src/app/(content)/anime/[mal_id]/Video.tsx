@@ -11,7 +11,7 @@ const Video = ({ anime }: VideoProps) => {
       title="YouTube video player"
       allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen
-      className="w-full h-96"
+      className="w-full aspect-video"
     />
   );
 };
