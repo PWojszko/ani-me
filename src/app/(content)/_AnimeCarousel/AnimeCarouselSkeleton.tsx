@@ -1,7 +1,7 @@
 import CarouselSkeleton from "@/components/Carousel/CarouselSkeleton";
 
-const TopAnimeSkeleton = () => {
+const AnimeCarouselSkeleton = () => {
   return <CarouselSkeleton skeletonClassName="rounded-xl" />;
 };
 
-export default TopAnimeSkeleton;
+export default AnimeCarouselSkeleton;
