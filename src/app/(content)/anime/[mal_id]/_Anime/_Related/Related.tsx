@@ -30,7 +30,7 @@ const Related = ({ anime }: RelatedProps) => {
                 </Button>
               </Link>
 
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 flex-1">
                 <div>
                   <p>{entry[0].type}</p>
                   <p className="text-xl font-bold">{relation}</p>

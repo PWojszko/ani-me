@@ -1,8 +1,7 @@
-import Jikan from "@/vendor/jikan/jikan";
 import AnimeCrousel from "./_AnimeCarousel/AnimeCarousel";
 import Hero from "./_Hero/Hero";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <section className="grid gap-10">
       <Hero />
@@ -12,4 +11,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

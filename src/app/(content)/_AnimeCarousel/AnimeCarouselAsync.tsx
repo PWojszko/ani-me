@@ -2,7 +2,7 @@ import Jikan from "@/vendor/jikan/jikan";
 import Carousel from "@/components/Carousel/Carousel";
 import AnimeCarouselCard from "./AnimeCarouselCard";
 
-export const animeListsApi = {
+const animeListsApi = {
   topAnime: Jikan.getTopAnime,
   seasonNow: Jikan.getSeasonNow,
 } as const;

@@ -34,7 +34,7 @@ const SeasonPickerRoll = ({ seasons }: SeasonPickerRollProps) => {
   }, [seasons?.data, selectedYear]);
 
   return (
-    <div className="flex place-items-center justify-between p-4 w-full h-full">
+    <div className="flex place-items-center justify-between p-4 w-56 h-80">
       <div className="relative">
         <motion.div
           className="px-2 h-48 overflow-y-scroll no-scrollbar py-20"

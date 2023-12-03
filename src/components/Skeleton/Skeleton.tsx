@@ -1,6 +1,8 @@
+import { HTMLProps } from "react";
+
 type SkeletonProps = {
   children?: React.ReactNode;
-  className: string;
+  className: HTMLProps<HTMLElement>["className"];
 };
 
 const Skeleton = ({ children, className }: SkeletonProps) => {

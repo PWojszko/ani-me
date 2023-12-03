@@ -50,12 +50,12 @@
       -webkit-box-orient: vertical;
     }
 
-    .grid-cols-repeat-64 {
-      grid-template-columns: repeat(auto-fill, theme(spacing.64));
+    .grid-cols-repeat-56 {
+      grid-template-columns: repeat(auto-fill, theme(spacing.56));
     }
 
-    .auto-rows-96 {
-      grid-auto-rows: theme(spacing.96);
+    .auto-rows-80 {
+      grid-auto-rows: theme(spacing.80);
     }
 
     .mask-image-transparent-gradient {

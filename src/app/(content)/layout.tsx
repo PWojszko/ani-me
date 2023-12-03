@@ -4,11 +4,11 @@ import SmallBottomNavbar from "../../components/Navbar/SmallBottomNavbar";
 import SmallTopNavbar from "../../components/Navbar/SmallTopNavbar";
 import "../globals.css";
 
-export default function ContentLayout({
-  children,
-}: {
+type ContentLayoutProps = {
   children: React.ReactNode;
-}) {
+};
+
+const ContentLayout = ({ children }: ContentLayoutProps) => {
   return (
     <div className="flex min-h-screen w-full select-none">
       <div className="flex flex-col md:flex-row flex-1">
@@ -34,4 +34,6 @@ export default function ContentLayout({
       </div>
     </div>
   );
-}
+};
+
+export default ContentLayout;
