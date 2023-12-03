@@ -16,8 +16,8 @@ type CarouselProps = {
 
 const Carousel = ({
   children,
-  width = 225,
-  height = 325,
+  width = 224,
+  height = 320,
   setProgress,
 }: CarouselProps) => {
   const { scrollLeft, scrollRight, scrollContainerRef, scrollProgress } =
@@ -34,14 +34,7 @@ const Carousel = ({
   }, [scrollXProgress, setProgress]);
 
   return (
-    <motion.section
-      className="relative grid grid-flow-col grid-rows-1 items-center origin-top"
-      viewport={{ once: true }}
-      initial={{ opacity: 0 }}
-      whileInView={{
-        opacity: 1,
-      }}
-    >
+    <section className="relative grid grid-flow-col grid-rows-1 items-center origin-top overflow-hidden">
       <AnimatePresence>
         {scrollProgress > 0 && (
           <motion.button
@@ -106,15 +99,12 @@ const Carousel = ({
         }}
       >
         {Children.toArray(children).map((child, index) => (
-          <div
-            key={index}
-            className="snap-start overflow-hidden h-80 w-56 rounded-xl"
-          >
+          <div key={index} className="snap-start overflow-hidden">
             {child}
           </div>
         ))}
       </div>
-    </motion.section>
+    </section>
   );
 };
 

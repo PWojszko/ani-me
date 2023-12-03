@@ -57,5 +57,9 @@
     .auto-rows-96 {
       grid-auto-rows: theme(spacing.96);
     }
+
+    .mask-image-transparent-gradient {
+      mask-image: linear-gradient(rgba(0, 0, 0, 1), transparent);
+    }
   }
 }

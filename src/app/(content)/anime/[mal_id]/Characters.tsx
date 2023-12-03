@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Carousel from "@/components/Carousel";
+import Carousel from "@/components/Carousel/Carousel";
 import { Character } from "@/vendor/jikan/jikanTypes";
 
 type CharactersProps = {

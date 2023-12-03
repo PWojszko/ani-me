@@ -1,4 +1,4 @@
-import Button from "@/components/Button";
+import Button from "@/components/Button/Button";
 import { Variants, motion } from "framer-motion";
 import Link from "next/link";
 import { Seasons } from "./SeasonPickerRoll";

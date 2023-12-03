@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/components/Button";
+import Button from "@/components/Button/Button";
 import { useEffect } from "react";
 import { AiFillWarning } from "react-icons/ai";
 

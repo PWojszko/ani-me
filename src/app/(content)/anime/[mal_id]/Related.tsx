@@ -5,7 +5,7 @@ import {
   AiOutlineLink,
 } from "react-icons/ai";
 import { Anime } from "@/vendor/jikan/jikanTypes";
-import Button from "@/components/Button";
+import Button from "@/components/Button/Button";
 
 type RelatedProps = {
   anime?: Anime;

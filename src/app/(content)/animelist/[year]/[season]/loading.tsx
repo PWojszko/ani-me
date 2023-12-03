@@ -1,4 +1,4 @@
-import Skeletons from "@/components/Loaders/Skeletons";
+import Skeletons from "@/components/Skeleton/Skeletons";
 
 const LodingAnimeList = () => {
   return (

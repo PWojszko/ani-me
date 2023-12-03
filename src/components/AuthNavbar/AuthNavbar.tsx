@@ -1,7 +1,7 @@
 "use client";
 
 import { useUser } from "@auth0/nextjs-auth0/client";
-import Skeleton from "../Loaders/Skeleton";
+import Skeleton from "../Skeleton/Skeleton";
 import AuthNavbarUnauthorized from "./AuthNavBarUnauthorized";
 import AuthNavbarAuthorized from "./AuthNavBarAuthorized";
 
