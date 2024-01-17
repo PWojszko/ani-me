@@ -1,7 +1,4 @@
-import {
-  AiOutlineUnorderedList,
-  AiOutlineUserAdd,
-} from "react-icons/ai";
+import { AiOutlineUnorderedList, AiOutlineUser } from "react-icons/ai";
 
 const NavLinks = [
   {
@@ -10,9 +7,9 @@ const NavLinks = [
     text: "Browse anime",
   },
   {
-    href: "/register",
-    icon: <AiOutlineUserAdd />,
-    text: "Register",
+    href: "/profile",
+    icon: <AiOutlineUser />,
+    text: "Profile",
   },
 ];
 

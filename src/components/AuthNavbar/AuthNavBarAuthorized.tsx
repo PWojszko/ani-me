@@ -21,13 +21,15 @@ const AuthNavbarAuthorized = ({ user }: { user: UserProfile }) => {
       </Link>
 
       {user.picture && user.name && (
-        <Image
-          className="object-cover rounded-full"
-          src={user.picture}
-          alt={`${user.name} profile picture`}
-          width={32}
-          height={32}
-        />
+        <Link href="/profile">
+          <Image
+            className="object-cover rounded-full"
+            src={user.picture}
+            alt={`${user.name} profile picture`}
+            width={32}
+            height={32}
+          />
+        </Link>
       )}
     </>
   );

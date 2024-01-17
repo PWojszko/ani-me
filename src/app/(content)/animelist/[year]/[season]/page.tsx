@@ -1,7 +1,7 @@
-import { Seasons } from "@/app/(content)/animelist/[year]/[season]/_SeasonPicker/SeasonPickerRoll";
-import Jikan from "@/vendor/jikan/jikan";
 import Image from "next/image";
 import Link from "next/link";
+import Jikan from "@/vendor/jikan/jikan";
+import { Seasons } from "../../../../../components/SeasonPicker/SeasonPickerRoll";
 
 type AnimeListPageParams = {
   params: {

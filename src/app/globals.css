@@ -22,6 +22,9 @@
   p {
     @apply text-base;
   }
+  * {
+    min-width: 0;
+  }
 }
 
 @layer utilities {

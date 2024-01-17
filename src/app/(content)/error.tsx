@@ -1,20 +1,14 @@
 "use client";
 
 import Button from "@/components/Button/Button";
-import { useEffect } from "react";
 import { AiFillWarning } from "react-icons/ai";
 
-export default function Error({
-  error,
-  reset,
-}: {
+type ContentErrorProps = {
   error: Error & { digest?: string };
   reset: () => void;
-}) {
-  useEffect(() => {
-    console.error(error);
-  }, [error]);
+};
 
+const ContentError = ({ error, reset }: ContentErrorProps) => {
   return (
     <div className="flex flex-col p-4 gap-4 h-full place-items-center place-content-center">
       <AiFillWarning className="text-5xl text-red-700" />
@@ -24,4 +18,6 @@ export default function Error({
       </div>
     </div>
   );
-}
+};
+
+export default ContentError;

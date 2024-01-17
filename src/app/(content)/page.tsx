@@ -1,5 +1,5 @@
-import AnimeCrousel from "./_AnimeCarousel/AnimeCarousel";
-import Hero from "./_Hero/Hero";
+import AnimeCrousel from "../../components/AnimeCarousel/AnimeCarousel";
+import Hero from "../../components/Hero/Hero";
 
 const HomePage = () => {
   return (

@@ -1,5 +1,5 @@
 import RotatedTitle from "@/components/RotatedTitle";
-import SeasonPicker from "./[year]/[season]/_SeasonPicker/SeasonPicker";
+import SeasonPicker from "../../../components/SeasonPicker/SeasonPicker";
 
 type AnimeListLayoutProps = {
   children: React.ReactNode;
