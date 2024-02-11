@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Jikan from "@/vendor/jikan/jikan";
-import Carousel from "@/components/Carousel/Carousel";
+import Carousel from "@/components/Carousel/CarouselWrapper";
 
 type CharactersAsyncProps = {
   mal_id: string;

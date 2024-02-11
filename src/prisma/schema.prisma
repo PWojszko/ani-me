@@ -1,0 +1,23 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("POSTGRES_PRISMA_URL")
+}
+
+model Anime {
+    id         String  @id
+    mal_id     String
+    rate       Int
+    is_watched Boolean
+    User       User    @relation(fields: [id], references: [id])
+}
+
+model User {
+    id    String  @id @default(cuid())
+    name  String
+    email String  @unique
+    anime Anime[]
+}

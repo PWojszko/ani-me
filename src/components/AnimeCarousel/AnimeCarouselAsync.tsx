@@ -1,5 +1,5 @@
 import Jikan from "@/vendor/jikan/jikan";
-import Carousel from "@/components/Carousel/Carousel";
+import CarouselWrapper from "@/components/Carousel/CarouselWrapper";
 import AnimeCarouselCard from "./AnimeCarouselCard";
 
 const animeListsApi = {
@@ -15,14 +15,14 @@ const AnimeCarouselAsync = async ({ listType }: AnimeCarouselAsyncProps) => {
   const animeList = await animeListsApi[listType]();
 
   return (
-    <Carousel>
+    <CarouselWrapper>
       {animeList?.data?.map((anime) => (
         <AnimeCarouselCard
           key={`current-season-anime-carousel-${anime.mal_id}`}
           anime={anime}
         />
       ))}
-    </Carousel>
+    </CarouselWrapper>
   );
 };
 

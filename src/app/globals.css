@@ -28,41 +28,39 @@
 }
 
 @layer utilities {
-  @variants responsive {
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 
-    .writing-vertical-rl {
-      writing-mode: vertical-rl;
-    }
+  .writing-vertical-rl {
+    writing-mode: vertical-rl;
+  }
 
-    .text-shadow {
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
-    }
+  .text-shadow {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+  }
 
-    .limited-text-lines-9 {
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-line-clamp: 9;
-      -webkit-box-orient: vertical;
-    }
+  .limited-text-lines-9 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 9;
+    -webkit-box-orient: vertical;
+  }
 
-    .grid-cols-repeat-56 {
-      grid-template-columns: repeat(auto-fill, theme(spacing.56));
-    }
+  .grid-cols-repeat-56 {
+    grid-template-columns: repeat(auto-fill, theme(spacing.56));
+  }
 
-    .auto-rows-80 {
-      grid-auto-rows: theme(spacing.80);
-    }
+  .auto-rows-80 {
+    grid-auto-rows: theme(spacing.80);
+  }
 
-    .mask-image-transparent-gradient {
-      mask-image: linear-gradient(rgba(0, 0, 0, 1), transparent);
-    }
+  .mask-image-transparent-gradient {
+    mask-image: linear-gradient(rgba(0, 0, 0, 1), transparent);
   }
 }

@@ -1,15 +1,14 @@
 import { Suspense } from "react";
-import AnimeCarouselSkeleton from "./AnimeCarouselSkeleton";
 import AnimeCarouselAsync, {
   AnimeCarouselAsyncProps,
 } from "./AnimeCarouselAsync";
 
-type AnimeCrouselProps = {
+type AnimeCarouselProps = {
   title: string;
   listType: AnimeCarouselAsyncProps["listType"];
 };
 
-const AnimeCrousel = ({ title, listType }: AnimeCrouselProps) => {
+const AnimeCarousel = ({ title, listType }: AnimeCarouselProps) => {
   return (
     <div className="grid grid-flow-col relative">
       <div className="flex flex-col items-center relative">
@@ -17,10 +16,10 @@ const AnimeCrousel = ({ title, listType }: AnimeCrouselProps) => {
         <div className="flex-1 bg-red-700 w-0.5"></div>
       </div>
 
-      <Suspense fallback={<AnimeCarouselSkeleton />}>
+      <Suspense fallback={<div />}>
         <AnimeCarouselAsync listType={listType} />
       </Suspense>
     </div>
   );
 };
-export default AnimeCrousel;
+export default AnimeCarousel;

@@ -1,12 +1,12 @@
-import AnimeCrousel from "../../components/AnimeCarousel/AnimeCarousel";
+import AnimeCarousel from "../../components/AnimeCarousel/AnimeCarousel";
 import Hero from "../../components/Hero/Hero";
 
 const HomePage = () => {
   return (
     <section className="grid gap-10">
       <Hero />
-      <AnimeCrousel title="Top anime" listType="topAnime" />
-      <AnimeCrousel title="Current season" listType="seasonNow" />
+      <AnimeCarousel title="Top anime" listType="topAnime" />
+      <AnimeCarousel title="Current season" listType="seasonNow" />
     </section>
   );
 };
