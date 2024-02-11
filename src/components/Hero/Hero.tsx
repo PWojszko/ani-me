@@ -1,10 +1,7 @@
-"use client";
-
 import Image from "next/image";
 import HeroAsync from "./HeroAsync";
 import { Suspense } from "react";
 import HeroSkeleton from "./HeroSkeleton";
-import Button from "../Button/Button";
 
 const Hero = () => {
   return (
